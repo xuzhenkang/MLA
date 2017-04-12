@@ -65,10 +65,13 @@
 <p>Formally, throughout the paper we use the convention that i denotes the index over M users, forming the set I, and j denotes the index over N items, forming the set J . Every user i （ I is modeled by a user bias variable alpha_i （ R, accounting for users who tend to like/dislike most of the items, and a d-dimensional trait vector u_i （ R^d. The trait vector represents the latent embedding of user i in a d-dimensional space, where d << M,N. Every item j （ J is modeled with latent variables beta_j （ R (the item bias that accounts for item popularity) and a trait vector v_j （ R^d that represents the latent embedding of item j in the same d-dimensional space. </p>
 <p>Given that both users and items trait vectors lie in the same latent space, the similarity between a user i and an item j can be measured with the inner product of their corresponding trait vectors u^T_i v_j . We now present two models for estimating the latent variables, depending on the type of observations we obtain from users, i.e., absolute or pairwise. </p>
 
+<p>Pairwise Model. People are often better at giving relative preferences over items instead of absolute judgments. Such preferences yield tuples of the form (user i, item j, item h) when user i prefers item j over item h (both j and h are indices over J .) We can adapt the generative model to such ground truth data by modifying the third step of the Absolute model to yield a pairwise model: </p>
+
+
 <h4>......</h4>
 
 <h4>4.3 Continuous Learning Recommender</h4>
-<p>To generate recommendations, most latent factor based recommender systems use an offine trained model based on past interactions, such as the one described above, that they periodically update to incorporate new data. The parameters for new users are typically initialized based on a combination of explicit attributes and past ratings (e.g [1]). The items with the highest predicted noisy affinity mean comprise the recommendations presented to the user.</p>
+<p>To generate recommendations, most latent factor based recommender systems use an offline trained model based on past interactions, such as the one described above, that they periodically update to incorporate new data. The parameters for new users are typically initialized based on a combination of explicit attributes and past ratings (e.g [1]). The items with the highest predicted noisy affinity mean comprise the recommendations presented to the user.</p>
 <p>In contrast, recent work has moved towards continuously learning recommenders [4, 16, 33]. This optimizes for online performance using explore-exploit (EE) strategies. We present our fully online updated recommendation approach with the embedded preference elicitation in Algorithm 1. Following we detail the components of this algorithm for the case of asking absolute questions (Abs). In Section 4.4 we show how we extend this framework for relative questions.</p>
 
 <h5>4.3.1 Initialization from Offline Data</h5>
